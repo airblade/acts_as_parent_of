@@ -12,10 +12,4 @@ For those using the recipe, you can save yourself some typing by adding the `act
 You'll still need to write your views and controller as explained in the recipe.
 
 
-To Do
-=====
-
-* Make `:validates_associated` optional.
-
-
 Copyright (c) 2008 Andy Stewart (boss@airbladesoftware.com), released under the MIT license

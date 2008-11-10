@@ -23,26 +23,26 @@ module AirBlade
           children.each do |child|
             singular_child = Inflector.singularize child
             code = <<-END
-              def new_#{singular_child}_attributes=(attrs)
-                attrs.each do |attributes|
+              def new_#{singular_child}_attributes=(#{singular_child}_attributes)
+                #{singular_child}_attributes.each do |attributes|
                   #{child}.build attributes
                 end
               end
 
-              def existing_#{singular_child}_attributes=(attrs)
-                #{child}.reject(&:new_record?).each do |child_model|
-                  attributes = attrs[child_model.id.to_s]
+              def existing_#{singular_child}_attributes=(#{singular_child}_attributes)
+                #{child}.reject(&:new_record?).each do |#{singular_child}|
+                  attributes = #{singular_child}_attributes[#{singular_child}.id.to_s]
                   if attributes
-                    child_model.attributes = attributes
+                    #{singular_child}.attributes = attributes
                   else
-                    #{child}.delete child_model
+                    #{child}.delete #{singular_child}
                   end
                 end
               end
 
               def save_#{child}
-                #{child}.each do |child_model|
-                  child_model.save(false)
+                #{child}.each do |#{singular_child}|
+                  #{singular_child}.save(false)
                 end
               end
             END

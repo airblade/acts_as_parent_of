@@ -25,7 +25,7 @@ module AirBlade
             code = <<-END
               def new_#{singular_child}_attributes=(attrs)
                 attrs.each do |attributes|
-                  #{child}.build attrs
+                  #{child}.build attributes
                 end
               end
 

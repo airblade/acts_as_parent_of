@@ -21,7 +21,7 @@ module AirBlade
           end
 
           children.each do |child|
-            singular_child = Inflector.singularize child
+            singular_child = ActiveSupport::Inflector.singularize child
             code = <<-END
               def new_#{singular_child}_attributes=(#{singular_child}_attributes)
                 #{singular_child}_attributes.each do |attributes|

@@ -1,7 +1,7 @@
 ActsAsParentOf
 ==============
 
-If you are on Rails 2.3 or above, use Rails' [nested attributes][http://guides.rubyonrails.org/2_3_release_notes.html#nested-attributes] feature.
+If you are on Rails 2.3 or above, use Rails' [nested attributes](http://guides.rubyonrails.org/2_3_release_notes.html#nested-attributes) feature.
 
 If you are on Rails 2.2 or below, keep reading.
 

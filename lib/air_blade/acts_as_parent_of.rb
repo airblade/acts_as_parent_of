@@ -61,14 +61,20 @@ module AirBlade
 
         has_ones.each do |child|
           code = <<-END
-            def new_#{child}_attributes=(#{child}_attributes)                          # def new_budget_attributes=(budget_attributes)
-              build_#{child} #{child}_attributes                                       #   build_budget budget_attributes
+            def #{child}_attributes=(#{child}_attributes)                              # def budget_attributes=(budget_attributes)
+              if #{child}_attributes.nil?                                              #   if budget_attributes.nil?
+                #{child} = nil                                                         #     budget = nil
+              else                                                                     #   else
+                if #{child}.nil?                                                       #     if budget.nil?
+                  build_#{child} #{child}_attributes                                   #       build_budget budget_attributes
+                else                                                                   #     else
+                  #{child}.attributes = #{child}_attributes                            #       budget.attributes = budget_attributes
+                end                                                                    #     end
+              end                                                                      #   end
             end                                                                        # end
 
-            # TODO: existing child
-
             def save_#{child}                                                          # def save_budget
-              #{child}.save(false)                                                     #   budget.save(false)
+              #{child}.save(false) unless #{child}.nil?                                #   budget.save(false) unless budget.nil?
             end                                                                        # end
           END
           module_eval code, __FILE__, __LINE__

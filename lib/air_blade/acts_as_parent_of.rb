@@ -61,14 +61,14 @@ module AirBlade
 
         has_ones.each do |child|
           code = <<-END
-            def #{child}_attributes=(#{child}_attributes)                              # def budget_attributes=(budget_attributes)
-              if #{child}_attributes.nil?                                              #   if budget_attributes.nil?
-                #{child} = nil                                                         #     budget = nil
+            def #{child}_attributes=(attrs)                                            # def budget_attributes=(attrs)
+              if attrs.nil?                                                            #   if attrs.nil?
+                self.#{child} = nil                                                    #     self.budget = nil
               else                                                                     #   else
                 if #{child}.nil?                                                       #     if budget.nil?
-                  build_#{child} #{child}_attributes                                   #       build_budget budget_attributes
+                  build_#{child} attrs                                                 #       build_budget attrs
                 else                                                                   #     else
-                  #{child}.attributes = #{child}_attributes                            #       budget.attributes = budget_attributes
+                  #{child}.attributes = attrs                                          #       budget.attributes = attrs
                 end                                                                    #     end
               end                                                                      #   end
             end                                                                        # end

@@ -19,7 +19,7 @@ You'll still need to write your views and controller as explained in the recipe.
 
 ## has_many versus has_one
 
-Although the recipe assumes your parent has many children, `acts_as_parent_of` also handles the case where the parent has one child (e.g. :budget in the example above).  Just remember in your controller's `update` method to set the child's attributes to `nil` rather than `{}`.  For example:
+Although the recipe assumes your parent has many children, `acts_as_parent_of` also handles the case where the parent has one child (e.g. `:budget` in the example above).  Just remember in your controller's `update` method to set the child's attributes to `nil` rather than `{}`.  For example:
 
     class ProjectController < ApplicationController
       def update
